@@ -1,0 +1,103 @@
+/* меню */
+.nav_menu {
+    padding-left: 0px;
+	margin: 20px 0;
+}
+.nav_menu ul {
+	margin: 0;
+	padding: 0;
+}
+.nav_menu li {
+	margin: 0 5px 10px 0;
+	padding: 0;
+	list-style: none;
+	display: inline-block;
+	*display:inline; /* ie7 */
+}
+.nav_menu a {
+	padding: 3px 12px;
+	text-decoration: none;
+	color: #999;
+	line-height: 100%;
+}
+.nav_menu a:hover {
+	color: #f2dede;
+	text-shadow: 3px 0px 5px rgba(150, 150, 150, 1);
+}
+.nav_menu .current a {
+	background: #999;
+	color: #fff;
+	border-radius: 3px;
+}
+
+/* меню справа */
+.nav_menu.right ul {
+	text-align: right;
+}
+
+/* меню по центру */
+.nav_menu.center ul {
+	text-align: center;
+}
+
+
+@media screen and (max-width: 600px) {
+	.nav_menu {
+		position: relative;
+		min-height: 40px;
+	}
+	.nav_menu ul {
+		width: 180px;
+		padding: 5px 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border: solid 1px #aaa;
+		background: #FAFAFA url(images/icon-menu.png) no-repeat 10px 11px;
+		border-radius: 5px;
+		box-shadow: 0 1px 2px rgba(0,0,0,.3);
+	}
+	.nav_menu li {
+		display: none; /* скрыть все <li> пункты */
+		margin: 0;
+	}
+	.nav_menu .current {
+		display: block; /* показывать только текущие активные <li> пункты */
+	}
+	.nav_menu a {
+		display: block;
+		padding: 5px 5px 5px 32px;
+		text-align: left;
+	}
+	.nav_menu .current a {
+		background: none;
+		color: #666;
+	}
+
+	/* при наведении на пункты меню */
+	.nav_menu ul:hover {
+	    text-decoration: underline;
+		background-image: none;
+		
+	}
+	.nav_menu ul:hover li {
+		display: block;
+		margin: 0 0 5px;
+	}
+	.nav_menu ul:hover .current {
+		background: url(images/icon-check.png) no-repeat 10px 7px;
+	}
+
+	/* адаптивное меню справа */
+	.nav_menu.right ul {
+		left: auto;
+		right: 0;
+	}
+
+	/* адаптивное меню по центру */
+	.nav_menu.center ul {
+		left: 50%;
+		margin-left: -90px;
+	}
+
+}

@@ -1,0 +1,104 @@
+h1 a {
+    color: #2E0694;
+    font-family: 'Abril Fatface', cursive;
+    }
+
+body {
+    padding-left: 15px;
+    background-color: silver;
+}
+
+img {
+    width:100%;
+    margin: 10px 0px 10px 0px;
+}
+
+p {
+    word-wrap: break-word;
+    margin-right: 15px
+}
+
+    .site_name {
+        margin-left: 10px;
+    }
+
+    .copyright {
+        min-height: 40px;
+        background-color: #000000;
+    }
+
+    .page-header {
+        background-color: #6333DE;
+        margin-top: 15px;
+        padding: 20px 20px 20px 40px;
+        box-shadow: -19px 23px 22px -4px #777;
+        border-bottom: none;
+        background: linear-gradient(to right, #6333DE 0%, #2f117d 40%, #200c54 60%, #201146 100%);
+        margin-bottom: 35px;
+    }
+
+    .save {
+        margin-right: 15px
+    }
+
+    .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+        color: #ffffff;
+        font-size: 36pt;
+        text-decoration: none;
+    }
+
+    .col-md-8 {
+        background-color: mintcream;
+    }
+    .content {
+        width: unset;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Lobster', cursive;
+    }
+
+    .date {
+        float: right;
+        color: #828282;
+        margin-right: 10px;
+    }
+
+    .save {
+        float: right;
+    }
+
+    .post-form textarea, .post-form input {
+        width: 100%;
+        border: 2px solid #ccc;
+        border-radius: 3px;
+        padding: 8px 15px;
+        margin: 8px 0;
+        box-sizing: border-box;
+
+    }
+
+    .top-menu, .top-menu:hover, .top-menu:visited {
+        color: #ffffff;
+        float: right;
+        font-size: 26pt;
+        margin-right: 20px;
+    }
+
+    .post {
+        margin-bottom: 10px;
+    }
+
+    .post h1 a, .post h1 a:visited {
+        color: #000000;
+    }
+
+    .custom-footer {
+        background-color:#0c1a1e; min-height:50px; font-family: 'Open Sans', sans-serif;
+        }
+
+    .copyright {
+        min-height:40px; background-color: hsla(0, 0%, 0%, 0.79);
+        margin-top: 5px;
+        box-shadow: 0 -5px 0px 0px rgba(240, 173, 78, 0.58);
+     }

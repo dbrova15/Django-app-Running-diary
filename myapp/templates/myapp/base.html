@@ -1,0 +1,95 @@
+{% load staticfiles %}
+{#{{form.media}}#}
+{#{% load adminmedia %} /* At the top of the template. */#}
+
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+</head>
+<body>
+
+<head>
+    <title>
+        {% block title2 %}
+        {% endblock %}
+    </title>
+{#    <script type="text/javascript">#}
+{#    window.__admin_media_prefix__ = "{% filter escapejs %}{% admin_media_prefix %}{% endfilter %}";#}
+{#    </script>#}
+{#    <script type="text/javascript" src="/my_admin/jsi18n/"></script>#}
+{#    <script type="text/javascript" src="/media/admin/js/core.js"></script>#}
+{##}
+{#    <link rel="stylesheet" type="text/css" href="/media/admin/css/forms.css"/>#}
+{#    <link rel="stylesheet" type="text/css" href="/media/admin/css/base.css"/>#}
+{#    <link rel="stylesheet" type="text/css" href="/media/admin/css/global.css"/>#}
+{#    <link rel="stylesheet" type="text/css" href="/media/admin/css/widgets.css"/>#}
+
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/apps.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+
+
+</head>
+
+<body>
+<div>
+    <div class="content container">
+        <div class="col-md-12 page-header">
+            <h1 class="site_name"><a href="/">My App</a></h1>
+            <ul class="nav_menu">
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'add_post' %}" class="top-menu">Add post</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'post_list' %}" class="top-menu">Post list</a></li>
+                {% endif %}
+
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'login' %}" class="top-menu">Login</a></li>
+
+
+                    <li><a href="{% url 'signup' %}" class="top-menu">Signup</a></li>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" class="top-menu">Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</body>
+
+<footer>
+
+</footer>
+
+<div class="copyright col-md-8 col-md-offset-2">
+    <div class="container" style="color: white; margin: 10px">
+        <div class="col-md-4">
+            © 2017 - Powered by <a href="https://github.com/dbrova15">Brova Dmitriy</a></div>
+        <div class="col-md-4 col-md-offset-1" style="padding-right: 80px;">
+            <a href="https://github.com/dbrova15/Django_Blog" style="float: right;">GitHub</a>
+        </div>
+    </div>
+</div>
+</html>

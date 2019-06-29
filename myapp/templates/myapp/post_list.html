@@ -1,0 +1,33 @@
+{% extends 'myapp/base.html' %}
+{% block title %}
+    POST LIST
+{% endblock %}
+
+{% block title2 %}
+    POST LIST
+
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h2>POST LIST</h2>
+        <div>
+            <table class="table">
+                {%  for title in title_tables %}
+                    <td style="border: 2px solid black; width: 70px;">{{ title }}</td>
+                {%  endfor %}
+                {% for post in posts %}
+                    <tr style="border: 1px solid black; width: 70px;">
+                        <td style="border: 1px solid black; width: 70px;">{{ post.author }}</td>
+                        <td style="border: 1px solid black; width: 70px;">{{ post.distance }}</td>
+                        <td style="border: 1px solid black; width: 70px;">{{ post.duration }}</td>
+                        <td style="border: 1px solid black; width: 70px;">{{ post.published_date }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+
+
+{% endblock %}

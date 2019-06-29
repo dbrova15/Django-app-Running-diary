@@ -9,8 +9,10 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now(), help_text="")
     distance = models.IntegerField(help_text="Вводить данные в метрах")
     duration = models.IntegerField(help_text="Ввидить данные в минутах")
+    speed = models.FloatField(default=None)
 
     def publish(self):
+        # self.speed = self.distance / self.duration
         # self.published_date = timezone.now()
         self.save()
 
@@ -21,9 +23,9 @@ class Post(models.Model):
         return "{} {}".format(self.author, self.published_date)
 
     def get_data(self):
-        speed = self.distance / self.duration
+        # speed = self.distance / self.duration
 
         return {"published_date": self.published_date,
                 "distance": self.distance,
                 "duration": self.duration,
-                "speed": speed}
+                "speed": self.speed}

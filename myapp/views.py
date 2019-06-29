@@ -17,12 +17,15 @@ def readme(request):
 @login_required
 def add_post(request):
     if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.speed = int(request.POST['distance'][0]) / int(request.POST['duration'][0])
+            print(post)
             post.save()
-            return redirect('post_list')
+            return redirect('post_list') #, pk=post.pk)
         else:
             print(form.is_valid())
     else:
@@ -35,8 +38,9 @@ def add_post(request):
 def post_list(request):
     if request.user.is_authenticated:
         login = request.user.id
-        title_tables = ["Author", "Distance, m", "Duration, min", "Published date"]
+        title_tables = ["Author", "Distance, m", "Duration, min", "Speed", "Published date"]
         posts = Post.objects.filter(published_date__lte=timezone.now(), author=login).order_by('published_date')
+        # print(posts)
         return render(request, 'myapp/post_list.html', {"posts": posts, "title_tables": title_tables})
     else:
         return HttpResponseRedirect('/login')
@@ -73,9 +77,10 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
-# @login_required
-# def add_post(request):
-#     if request.user.is_authenticated:
-#         return render(request, 'myapp/add_post.html', {})
-#     else:
-#         return HttpResponseRedirect('/login')
+
+def del_post(request):
+    return None
+
+
+def edit_post(request):
+    return None

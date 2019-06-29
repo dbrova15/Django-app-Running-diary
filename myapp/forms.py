@@ -8,14 +8,15 @@ from django.contrib.admin import widgets
 class PostForm(forms.ModelForm):
     # def __init__(self, *args, **kwargs):
     #     super(PostForm, self).__init__(*args, **kwargs)
-    #     self.fields['published_date'].widget = widgets.AdminSplitDateTime()
+        # self.fields['published_date'].widget = widgets.AdminSplitDateTime()
+
 
     class Meta:
         model = Post
         fields = ('published_date', 'distance', 'duration')
-        widgets = {
-            'published_date': widgets.AdminSplitDateTime(),
-        }
+        # widgets = {
+        #     'published_date': widgets.AdminSplitDateTime(),
+        # }
 
 
 # http://students.summerisgone.com/labs/lab4.html

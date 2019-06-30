@@ -1,31 +1,23 @@
 {% extends 'myapp/base.html' %}
+{% load render_table from django_tables2 %}
+{% load static %}
 {% block title %}
     POST LIST
 {% endblock %}
 
-{% block title2 %}
-    POST LIST
+{% block rander_table_block %}
+    <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}"/>
 
 {% endblock %}
 
 {% block content %}
-    <div>
+    <div style="text-align:center;">
         <h2>POST LIST</h2>
+{#        {% for p in posts %}#}
+{#            <a href="{{ p.get_absolute_url_delete }}">{{ p.id }}</a>#}
+{#        {% endfor %}#}
         <div>
-            <table class="table">
-                {%  for title in title_tables %}
-                    <td style="border: 2px solid black; width: 70px;">{{ title }}</td>
-                {%  endfor %}
-                {% for post in posts %}
-                    <tr style="border: 1px solid black; width: 70px;">
-                        <td style="border: 1px solid black; width: 70px;">{{ post.author }}</td>
-                        <td style="border: 1px solid black; width: 70px;">{{ post.distance }}</td>
-                        <td style="border: 1px solid black; width: 70px;">{{ post.duration }}</td>
-                        <td style="border: 1px solid black; width: 70px;">{{ post.speed }}</td>
-                        <td style="border: 1px solid black; width: 70px;">{{ post.published_date }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
+            {% render_table posts %}
         </div>
 
     </div>

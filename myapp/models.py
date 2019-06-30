@@ -8,7 +8,7 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now(), help_text="")
     distance = models.IntegerField(help_text="Вводить данные в метрах")
-    duration = models.IntegerField(help_text="Ввидить данные в минутах")
+    duration = models.IntegerField(help_text="Вводить данные в минутах")
     speed = models.FloatField(default=None)
 
     def publish(self):
@@ -23,9 +23,16 @@ class Post(models.Model):
         return "{} {}".format(self.author, self.published_date)
 
     def get_data(self):
-        # speed = self.distance / self.duration
-
         return {"published_date": self.published_date,
                 "distance": self.distance,
                 "duration": self.duration,
                 "speed": self.speed}
+
+    def get_absolute_url_delete(self):
+        from django.urls import reverse
+        # from django.core.urlresolvers import reverse
+        return reverse('del_post', args=[str(self.id)])
+
+    def get_absolute_url_update(self):
+        from django.urls import reverse
+        return reverse('edit_post', args=[str(self.id)])

@@ -8,6 +8,7 @@ urlpatterns = [
     path('login', views.login_view, name='login'),
     path('logout', views.logout_view, name='logout'),
     path('add_post', views.add_post, name='add_post'),
-    path('del_post', views.del_post, name='del_post'),
-    path('edit_post', views.edit_post, name='edit_post'),
+    path('post_del/id=<int:id_post>', views.del_post, name='del_post'),
+    path('edit_post/id=<int:id_post>', views.edit_post, name='edit_post'),
+    path('statistic', views.statistic, name='statistic'),
 ]

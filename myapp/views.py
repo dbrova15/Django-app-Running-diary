@@ -3,10 +3,12 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django_tables2 import RequestConfig
 
 from myapp.forms import LoginForm, PostForm
+from myapp.tables import PersonTable
 from .models import Post
 
 
@@ -35,13 +37,20 @@ def add_post(request):
     })
 
 @login_required
-def post_list(request):
+def post_list(request):  # todo фильтрация данных
     if request.user.is_authenticated:
+        # if request.method == 'POST':
+        #     login = request.user.id
+        #     title_tables = ["Author", "Distance, m", "Duration, min", "Speed", "Published date"]
+        #     table = PersonTable(
+        #         Post.objects.filter(published_date__lte=timezone.now(), author=login, published_date__range=(start_date, end_date)).order_by('published_date'))
+        #     RequestConfig(request).configure(table)
+
         login = request.user.id
         title_tables = ["Author", "Distance, m", "Duration, min", "Speed", "Published date"]
-        posts = Post.objects.filter(published_date__lte=timezone.now(), author=login).order_by('published_date')
-        # print(posts)
-        return render(request, 'myapp/post_list.html', {"posts": posts, "title_tables": title_tables})
+        table = PersonTable(Post.objects.filter(published_date__lte=timezone.now(), author=login).order_by('published_date'))
+        RequestConfig(request).configure(table)
+        return render(request, 'myapp/post_list.html', {"posts": table, "title_tables": title_tables})
     else:
         return HttpResponseRedirect('/login')
 
@@ -77,10 +86,32 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+@login_required
+def del_post(request, id_post):
+    post = get_object_or_404(Post, pk=id_post)
+    query = post.delete()
+    return redirect("/post_list", request, query)
 
-def del_post(request):
-    return None
+@login_required
+def edit_post(request, id_post):
+    post = get_object_or_404(Post, pk=id_post)
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        print(request.POST)
+        if form.is_valid():
+            post.author = request.user
+            post.speed = int(request.POST['distance'][0]) / int(request.POST['duration'][0])
+            print(post)
+            post.save()
+            return redirect('post_list')  # , pk=post.pk)
+        else:
+            print(form.is_valid())
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'myapp/add_post.html', {
+        'form': form
+    })
 
-
-def edit_post(request):
+@login_required
+def statistic(request):
     return None

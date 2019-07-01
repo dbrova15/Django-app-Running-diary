@@ -11,19 +11,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="col-md-6 col-md-offset-3">
-        <h1 style="text-align:center;">Filter date</h1>
-        <form method="post" class="post-form" enctype="multipart/form-data">
-             {{ form.as_p }}
-            {% csrf_token %}
-            <input type="submit" class="btn btn-primary" value="Request"/>
-        </form>
-    </div>
     <div style="text-align:center;" class="col-md-8 col-md-offset-2">
-        <h2>POST LIST</h2>
-        <h4>Average_speed: {{ average_speed }} m/h</h4>
+        <h2>Statistic</h2>
         <div style="text-align:center;">
-            {% render_table posts %}
+            {% render_table table %}
         </div>
 
     </div>

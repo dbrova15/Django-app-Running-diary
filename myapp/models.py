@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.utils.timezone import get_current_timezone
 from pytz import unicode
 
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    published_date = models.DateTimeField(blank=True, null=True, default=timezone.now(), help_text="")
+    published_date = models.DateTimeField(blank=True, null=True, default=get_current_timezone(), help_text="")
     distance = models.IntegerField(help_text="Вводить данные в метрах")
     duration = models.IntegerField(help_text="Вводить данные в минутах")
     speed = models.FloatField(default=None)

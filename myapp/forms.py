@@ -1,22 +1,19 @@
 from django import forms
+from django.forms import SelectDateWidget
 
 from .models import Post
 from django.contrib.auth import authenticate
-from django.contrib.admin import widgets
+
+
+class ReportFiltersForm(forms.Form):
+    start_date = forms.DateField(widget=SelectDateWidget())
+    end_date = forms.DateField(widget=SelectDateWidget())
 
 
 class PostForm(forms.ModelForm):
-    # def __init__(self, *args, **kwargs):
-    #     super(PostForm, self).__init__(*args, **kwargs)
-        # self.fields['published_date'].widget = widgets.AdminSplitDateTime()
-
-
     class Meta:
         model = Post
         fields = ('published_date', 'distance', 'duration')
-        # widgets = {
-        #     'published_date': widgets.AdminSplitDateTime(),
-        # }
 
 
 # http://students.summerisgone.com/labs/lab4.html

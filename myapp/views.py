@@ -24,12 +24,12 @@ def readme(request):
 def add_post(request):
     if request.method == "POST":
         form = PostForm(request.POST)
-        print(request.POST)
+        # print(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.speed = int(request.POST['distance'][0]) / int(request.POST['duration'][0])
-            print(post)
+            post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
+            # print(post)
             post.save()
             return redirect('post_list') #, pk=post.pk)
         else:
@@ -51,8 +51,11 @@ def post_list(request):  # todo фильтрация данных
         table = PersonTable(
             Post.objects.filter(author=login))
 
-        all_speed = [i.speed for i in Post.objects.filter(author=login)]
-        average_speed = sum(all_speed) / len(all_speed)
+        if table.rows.__len__() != 0:
+            all_speed = [i.speed for i in Post.objects.filter(author=login)]
+            average_speed = sum(all_speed) / len(all_speed)
+        else:
+            average_speed = 0
         if request.method == 'POST':
             form = ReportFiltersForm(request.POST)
             if form.is_valid():
@@ -114,7 +117,8 @@ def edit_post(request, id_post):
         form = PostForm(request.POST)
         if form.is_valid():
             post.author = request.user
-            post.speed = int(request.POST['distance'][0]) / int(request.POST['duration'][0]) * 60
+            # post.speed = int(request.POST['distance'][0]) / int(request.POST['duration'][0]) * 60
+            post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
             post.save()
             return redirect('post_list')  # , pk=post.pk)
         else:
@@ -136,7 +140,7 @@ def statistic(request):
     data_set = Post.objects.filter(author=login, published_date__year__gte=last_year).annotate(
         week=ExtractWeek('published_date')
     ).values('week').annotate(
-        all_records=Count('speed', distinct=True)
+        all_records=Count('speed')
     ).annotate(
         sum_distance=Sum('distance')
     ).annotate(

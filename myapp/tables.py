@@ -9,7 +9,7 @@ class PersonTable(tables.Table):
     delete = tables.TemplateColumn(T2)
     distance = tables.Column(verbose_name='Distance, m')
     duration = tables.Column(verbose_name='Duration, min')
-    speed = tables.Column(verbose_name='Speed, m/h')
+    speed = tables.Column(verbose_name='Speed, km/h')
 
     class Meta:
         model = Post
@@ -21,4 +21,4 @@ class StatTable(tables.Table):
     all_records = tables.Column(verbose_name='All records')
     sum_distance = tables.Column(verbose_name='Sum distance, m')
     total_duration = tables.Column(verbose_name='Total duration, min')
-    average_speed = tables.Column(verbose_name='Average speed, m/h')
+    average_speed = tables.Column(verbose_name='Average speed, km/h')

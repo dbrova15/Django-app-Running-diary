@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 from django.forms import SelectDateWidget
 
@@ -11,6 +13,7 @@ class ReportFiltersForm(forms.Form):
 
 
 class PostForm(forms.ModelForm):
+    # published_date = forms.DateField(widget=SelectDateWidget(), input_formats="%d %b %Y %H:%M:%S %Z")
     class Meta:
         model = Post
         fields = ('published_date', 'distance', 'duration')

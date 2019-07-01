@@ -55,10 +55,10 @@
                 <li><a href="{% url 'readme' %}" class="top-menu">ReadMe</a></li>
 
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'add_post' %}" class="top-menu">Add post</a></li>
+                    <li><a href="{% url 'add_data' %}" class="top-menu">Add data</a></li>
                 {% endif %}
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'post_list' %}" class="top-menu">Post list</a></li>
+                    <li><a href="{% url 'data_list' %}" class="top-menu">Data list</a></li>
                 {% endif %}
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'statistic' %}" class="top-menu">Statistic</a></li>

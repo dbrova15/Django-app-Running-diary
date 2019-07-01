@@ -1,7 +1,7 @@
-import datetime
 
 from django import forms
 from django.forms import SelectDateWidget
+from django.utils import timezone
 
 from .models import Post
 from django.contrib.auth import authenticate
@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate
 
 class ReportFiltersForm(forms.Form):
     start_date = forms.DateField(widget=SelectDateWidget())
-    end_date = forms.DateField(widget=SelectDateWidget())
+    end_date = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
 
 
 class PostForm(forms.ModelForm):

@@ -8,7 +8,6 @@ from django.db.models import Avg, F, Count, Sum
 from django.db.models.functions import ExtractWeek
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
-from django.utils import timezone
 from django_tables2 import RequestConfig
 
 from myapp.forms import LoginForm, PostForm, ReportFiltersForm
@@ -21,7 +20,7 @@ def readme(request):
 
 
 @login_required
-def add_post(request):
+def add_data(request):
     if request.method == "POST":
         form = PostForm(request.POST)
         # print(request.POST)
@@ -31,44 +30,55 @@ def add_post(request):
             post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
             # print(post)
             post.save()
-            return redirect('post_list') #, pk=post.pk)
+            return redirect('data_list') #, pk=post.pk)
         else:
             print(form.is_valid())
     else:
         form = PostForm()
-    return render(request, 'myapp/add_post.html', {
+    return render(request, 'myapp/add_data.html', {
         'form': form
     })
 
+
+def default_table(login):
+    list_data = Post.objects.filter(author=login)
+    table = PersonTable(list_data)
+
+    if table.rows.__len__() != 0:
+        all_speed = [i.speed for i in list_data]
+        average_speed = sum(all_speed) / len(all_speed)
+    else:
+        average_speed = 0
+    return table, average_speed
+
+
 @login_required
-def post_list(request):  # todo фильтрация данных
-    # today = datetime.datetime.now()
-    # last_year = today.year - 1
-    # data_set = Post.objects.annotate(week=ExtractWeek('published_date')).values('week')
-    # print(data_set)
+def data_list(request):
     if request.user.is_authenticated:
         login = request.user.id
-        table = PersonTable(
-            Post.objects.filter(author=login))
 
-        if table.rows.__len__() != 0:
-            all_speed = [i.speed for i in Post.objects.filter(author=login)]
-            average_speed = sum(all_speed) / len(all_speed)
-        else:
-            average_speed = 0
         if request.method == 'POST':
             form = ReportFiltersForm(request.POST)
             if form.is_valid():
-                start_date = form.cleaned_data['start_date']
+                start_date = form.cleaned_data['start_date'] - datetime.timedelta(days=1)
                 end_date = form.cleaned_data['end_date'] + datetime.timedelta(days=1)
-                table = PersonTable(
-                    Post.objects.filter(author=login, published_date__range=(start_date, end_date)))
+                list_data = Post.objects.filter(author=login, published_date__range=(start_date, end_date))
+                table = PersonTable(list_data)
+                if table.rows.__len__() != 0:
+                    all_speed = [i.speed for i in list_data]
+                    average_speed = sum(all_speed) / len(all_speed)
+                else:
+                    average_speed = 0
+            else:
+                table, average_speed = default_table(login)
         else:
-            form = ReportFiltersForm()
+            table, average_speed = default_table(login)
+
+        form = ReportFiltersForm()
 
         title_tables = ["Author", "Distance, m", "Duration, min", "Speed", "Published date"]
         RequestConfig(request).configure(table)
-        return render(request, 'myapp/post_list.html', {"posts": table, "title_tables": title_tables, 'form': form, 'average_speed': average_speed})
+        return render(request, 'myapp/data_list.html', {"posts": table, "title_tables": title_tables, 'form': form, 'average_speed': average_speed})
     else:
         return HttpResponseRedirect('/login')
 
@@ -105,13 +115,13 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 @login_required
-def del_post(request, id_post):
+def del_data(request, id_post):
     post = get_object_or_404(Post, pk=id_post)
     query = post.delete()
-    return redirect("/post_list", request, query)
+    return redirect("/data_list", request, query)
 
 @login_required
-def edit_post(request, id_post):
+def edit_data(request, id_post):
     post = get_object_or_404(Post, pk=id_post)
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -120,20 +130,18 @@ def edit_post(request, id_post):
             # post.speed = int(request.POST['distance'][0]) / int(request.POST['duration'][0]) * 60
             post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
             post.save()
-            return redirect('post_list')  # , pk=post.pk)
+            return redirect('data_list')  # , pk=post.pk)
         else:
             print(form.is_valid())
     else:
         form = PostForm(instance=post)
-    return render(request, 'myapp/add_post.html', {
+    return render(request, 'myapp/add_data.html', {
         'form': form
     })
 
 
 @login_required
 def statistic(request):
-    # today = datetime.datetime.now()
-    month_12 = (datetime.datetime.today() - datetime.timedelta(days=30) * 12).month
     last_year = datetime.datetime.now().year - 1
     login = request.user.id
 

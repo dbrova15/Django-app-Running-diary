@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,14 +23,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.urandom(16)  # 'ffry3p%r))#9*p#tr!of0k49%*nq@(ta-4#bq9e6_y#bz0h$7_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+
+LOCAL_SERV = PROD_SERV = TEST_SERV = False
+
+test_host = []
+print("HOST", socket.gethostname())
+deploy_host = ['green-liveconsole3', 'green-liveweb7']
+if socket.gethostname() in deploy_host:
+    DEBUG = False
+    PROD_SERV = True
+elif socket.gethostname() in test_host:
+    TEST_SERV = True
+    DEBUG = True
+else:
+    DEBUG = True
+    LOCAL_SERV = True
+
 
 ALLOWED_HOSTS = ["bakz.pythonanywhere.com", "127.0.0.1", "localhost"]
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1063834827766-snp3s8f08gtb9rgeh9e13bsjqoq0bu8s.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'MuiPJXnlGqVfvia_G_0nUkzp'
-# SOCIAL_AUTH_FACEBOOK_KEY = ''
-
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
@@ -44,13 +56,9 @@ LOGOUT_REDIRECT_URL = 'login'
 # SOCIAL_AUTH_URL_NAMESPACE = 'social'
 # Application definition
 
-# SOCIAL_AUTH_FACEBOOK_APP_KEY = '1372551116228229'
-# SOCIAL_AUTH_FACEBOOK_APP_SECRET = 'd90ee92f00eb53405daf25952ab06582'
 SOCIAL_AUTH_FACEBOOK_APP_NAMESPACE = ''
 
-SOCIAL_AUTH_FACEBOOK_KEY = '1372551116228229'
-SOCIAL_AUTH_FACEBOOK_SECRET = 'd90ee92f00eb53405daf25952ab06582'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'locale': 'ru_RU',
@@ -178,10 +186,7 @@ except ImportError:
         "Error: Can't find the file 'settings.py' in the directory containing %r. It appears you've customized things.\nYou'll have to run django-admin.py, passing it your settings module.\n(If the file settings.py does indeed exist, it's causing an ImportError somehow.)\n" % __file__)
     # sys.exit(1)
 
-# print("DEBUG:", DEBUG)
-
 if LOCAL_SERV:
-    print("LOCAL SERV")
     # Database
     # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -191,28 +196,15 @@ if LOCAL_SERV:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-elif TEST_SERV:
-    print("TEST SERV")
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'test_name',
-            'USER': 'test_user',
-            'PASSWORD': 'test_passw',
-            'HOST': 'test_host',
-            'PORT': '',
-        }
-    }
+
 else:
-    print("PROD SERV")
-    # STATIC_ROOT = "/home/bakz/Running-diary/static" #os.path.join(BASE_DIR, "static")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'bakz$bakz',
-            'USER': 'bakz',
-            'PASSWORD': 'Qwerty1234',
-            'HOST': 'bakz.mysql.pythonanywhere-services.com',
+            'NAME': NAME_BASE,
+            'USER': USER_BASE,
+            'PASSWORD': PASSW_BASE,
+            'HOST': HOST_BASE,
             'PORT': '',
         }
     }

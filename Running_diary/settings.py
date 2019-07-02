@@ -181,11 +181,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'mydatabase',
-            'USER': 'mydatabaseuser',
-            'PASSWORD': 'mypassword',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
+            'NAME': 'default',
+            'USER': 'bakz',
+            'PASSWORD': 'Qwerty1234',
+            'HOST': 'bakz.mysql.pythonanywhere-services.com',
+            # 'PORT': '5432',
         }
     }
 print("DEBUG:", DEBUG)

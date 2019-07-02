@@ -1,7 +1,8 @@
 import socket
 
-debug_host = ['MI-Bakz']
-if socket.gethostname() in debug_host:
+
+deploy_host = ['green-liveconsole3']
+if socket.gethostname() in deploy_host:
     DEBUG = False
 else:
     DEBUG = True

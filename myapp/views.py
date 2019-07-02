@@ -30,7 +30,7 @@ def add_data(request):
             post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
             # print(post)
             post.save()
-            return redirect('data_list') #, pk=post.pk)
+            return redirect('data_list')  # , pk=post.pk)
         else:
             print(form.is_valid())
     else:
@@ -78,7 +78,8 @@ def data_list(request):
 
         title_tables = ["Author", "Distance, m", "Duration, min", "Speed", "Published date"]
         RequestConfig(request).configure(table)
-        return render(request, 'myapp/data_list.html', {"posts": table, "title_tables": title_tables, 'form': form, 'average_speed': average_speed})
+        return render(request, 'myapp/data_list.html',
+                      {"posts": table, "title_tables": title_tables, 'form': form, 'average_speed': average_speed})
     else:
         return HttpResponseRedirect('/login')
 
@@ -114,11 +115,13 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+
 @login_required
 def del_data(request, id_post):
     post = get_object_or_404(Post, pk=id_post)
     query = post.delete()
     return redirect("/data_list", request, query)
+
 
 @login_required
 def edit_data(request, id_post):

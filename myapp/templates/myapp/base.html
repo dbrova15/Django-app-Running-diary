@@ -80,18 +80,45 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12 mb-3">
+            <h4 class="text-center"> Welcome {{ user.username }} </h4>
+        </div>
+    </div>
 </div>
 </body>
 
 <footer>
     <div class="copyright col-md-8 col-md-offset-2">
-        <div class="container" style="color: white; margin: 10px; padding: 10px">
+        <div class="col-md-12 container" style="color: white; margin: 10px; padding: 10px">
             <div class="col-md-4">
                 © 2019 - Designed by <a href="https://www.linkedin.com/in/dmitriy-brova" target="_blank">Brova
-                Dmitriy</a></div>
+                Dmitriy</a>
+
+            </div>
             <div class="col-md-2 col-md-offset-4">
                 <a href="https://github.com/dbrova15" target="_blank" style="float: right;">GitHub</a>
             </div>
+
+        </div>
+        <div class="col-md-12">
+
+            <a href="https://www.iubenda.com/privacy-policy/83502159" class="iubenda-white iubenda-embed"
+               title="Privacy Policy ">Privacy Policy</a>
+            <script type="text/javascript">(function (w, d) {
+                var loader = function () {
+                    var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0];
+                    s.src = "https://cdn.iubenda.com/iubenda.js";
+                    tag.parentNode.insertBefore(s, tag);
+                };
+                if (w.addEventListener) {
+                    w.addEventListener("load", loader, false);
+                } else if (w.attachEvent) {
+                    w.attachEvent("onload", loader);
+                } else {
+                    w.onload = loader;
+                }
+            })(window, document);</script>
         </div>
     </div>
 </footer>

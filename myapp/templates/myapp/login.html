@@ -4,10 +4,6 @@
     Login
 {% endblock %}
 
-{% block title2 %}
-    Login
-{% endblock %}
-
 {% block content %}
 
     <div class="col-md-4" style="float: left">
@@ -17,22 +13,39 @@
             {% csrf_token %}
             <input type="submit" class="btn btn-primary" value="Войти"/>
         </form>
-        {#        <a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}"#}
-        {#           onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-google']);">#}
-        {#            <span class="fa fa-google"></span> Sign in with Google#}
-        {#        </a>#}
-        {#        <a class="g-signin2" href="{% url 'social:begin' 'google-oauth2' %}">#}
-        {#            Login whith Google +#}
-        {#        </a>#}
+
         <button class="loginBtn loginBtn--google">
-                            <a style="color: #ffffff" href="{% url 'social:begin' 'google-oauth2' %}">
-                    Login whith Google +
-                </a>
+            <a style="color: #ffffff" href="{% url 'social:begin' 'google-oauth2' %}">
+                Login whith Google +
+            </a>
         </button>
-        <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
-            Login
-        </a>
-        {#    <div class="btn-google" data-onsuccess="onSignIn"></div>#}
+        <button class="loginBtn loginBtn--facebook">
+            <a style="color: #ffffff" href="{% url 'social:begin' 'facebook' %}">
+                Login with Facebook
+            </a>
+        </button>
+
+{#        <div class="row">#}
+{#            <div class="social-container my-2 order-md-1">#}
+{#                <button class="loginBtn loginBtn--google">#}
+{#                    <a style="color: #ffffff" href="{% url 'social:begin' 'google-oauth2' %}">#}
+{#                        Login whith Google +#}
+{#                    </a>#}
+{#                </button>#}
+{##}
+{#                <button class="btn btn-danger loginBtn mb-2">#}
+{#                    <a style="color: #ffffff" href="#">Login with Instagram</a>#}
+{#                </button>#}
+{#                <button class="btn btn-primary loginBtn mb-2">#}
+{#                    <a style="color: #ffffff" href="{% url 'social:begin' 'facebook' %}">Login with Facebook#}
+{#                    </a>#}
+{#                </button>#}
+{#                <button class="btn btn-info loginBtn mb-2">#}
+{#                    <a style="color: #ffffff" href="#">Login with LinkedIn</a>#}
+{#                </button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
 
     </div>
 {% endblock %}

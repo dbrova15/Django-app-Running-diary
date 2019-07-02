@@ -3,6 +3,7 @@ import socket
 LOCAL_SERV = PROD_SERV = TEST_SERV = False
 
 test_host = []
+print("HOST", socket.gethostname())
 deploy_host = ['green-liveconsole3']
 if socket.gethostname() in deploy_host:
     DEBUG = False

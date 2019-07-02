@@ -17,7 +17,9 @@ SQLite3
 Needed to be installed Python3. If not installed, download the link https://www.python.org/ and install.
 
 ###Deployment:
-
+If you are deploying a project on the server, specify the settings for connecting to the database in the file
+            myapp.settings in the DATABASES dictionary.
+            
 Run command:
 
 ```

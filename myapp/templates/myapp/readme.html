@@ -5,25 +5,25 @@
 {% block content %}
     <div style="margin: 10px">
         <h1>Django-app: Running-diary</h1>
-        Django-application for running statistics.
+        <p>Django-application for running statistics.</p>
 
         <h2>Site structure</h2>
         <h4>For unauthorized user:</h4>
         <ul>
             <li>ReadMe</li>
-            Data on the installation and use of the application
+            <p>Data on the installation and use of the application</p>
             <li>Login</li>
-            Authorization to enter the site
+            <p>Authorization to enter the site</p>
             <li>Sinup</li>
-            Registration on the site
+            <p>Registration on the site</p>
         </ul>
 
         <h4>For authorized user:</h4>
         <ul>
             <li>ReadMe</li>
-            Data on the installation and use of the application
+            <p>Data on the installation and use of the application</p>
             <li>Add data</li>
-            Form for adding new data.
+            <p>Form for adding new data.</p>
             <li>Accepted data</li>
             <ul>
                 <li>1. Date and time.</li>
@@ -31,14 +31,14 @@
                 <li>3. Duration (in minutes).</li>
             </ul>
             <li>Data list</li>
-            A list of all activities. The speed according to the results of the recording is also indicated.
+            <p>A list of all activities. The speed according to the results of the recording is also indicated.
             Separately, the average speed for all records.
-            There is a filter records by date.
+                There is a filter records by date.</p>
             <li>Statistic</li>
-            Statistics of all records grouped by week for last year - week number,
-            total amount of entries, total distance, total duration and weekly average speed.
+            <p>Statistics of all records grouped by week for last year - week number,
+                total amount of entries, total distance, total duration and weekly average speed.</p>
             <li>Logout</li>
-            Stop logging in as a registered user.
+            <p>Stop logging in as a registered user.</p>
         </ul>
 
         <h2>Technologies and Libraries</h2>
@@ -53,9 +53,9 @@
 
         <h2>Prerequisites</h2>
 
-        Needed to be installed Python3. If not installed, download the link <a href="https://www.python.org/"
+        <p>Needed to be installed Python3. If not installed, download the link <a href="https://www.python.org/"
                                                                                target="_blank">https://www.python.org/</a>
-        and install.
+            and install.</p>
 
         <h2>Deployment</h2>
 
@@ -64,7 +64,8 @@
         <code>pip3 install -r requirements.txt</code>
 
         <h4>Database Setup</h4>
-
+        <p>If you are deploying a project on the server, specify the settings for connecting to the database in the file
+            myapp.settings in the DATABASES dictionary.</p>
         <code>python manage.py migrate</code>
 
         <h4>Start app</h4>

@@ -172,7 +172,7 @@ if DEBUG:
         }
     }
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+    STATIC_ROOT = "/home/bakz/Running-diary/static" #os.path.join(BASE_DIR, "static")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',

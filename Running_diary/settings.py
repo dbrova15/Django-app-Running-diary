@@ -161,14 +161,10 @@ except ImportError:
 
 # print("DEBUG:", DEBUG)
 
-if DEBUG:
-    print("TRUE")
+if LOCAL_SERV:
+    print("LOCAL SERV")
     # Database
     # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-    # STATICFILES_DIRS = [
-    #     os.path.join(BASE_DIR, "static")
-    #
-    # ]
 
     DATABASES = {
         'default': {
@@ -176,12 +172,25 @@ if DEBUG:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+elif TEST_SERV:
+    print("TEST SERV")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'test_name',
+            'USER': 'test_user',
+            'PASSWORD': 'test_passw',
+            'HOST': 'test_host',
+            'PORT': '',
+        }
+    }
 else:
+    print("PROD SERV")
     # STATIC_ROOT = "/home/bakz/Running-diary/static" #os.path.join(BASE_DIR, "static")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'bakz',
+            'NAME': 'bakz$bakz',
             'USER': 'bakz',
             'PASSWORD': 'Qwerty1234',
             'HOST': 'bakz.mysql.pythonanywhere-services.com',
@@ -189,3 +198,4 @@ else:
         }
     }
 print("DEBUG:", DEBUG)
+print()

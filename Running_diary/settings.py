@@ -27,10 +27,8 @@ DEBUG = True
 ALLOWED_HOSTS = ["bakz.pythonanywhere.com", "127.0.0.1", "localhost"]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1063834827766-snp3s8f08gtb9rgeh9e13bsjqoq0bu8s.apps.googleusercontent.com'
-#  1063834827766-snp3s8f08gtb9rgeh9e13bsjqoq0bu8s.apps.googleusercontent.com
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'MuiPJXnlGqVfvia_G_0nUkzp'
-# MuiPJXnlGqVfvia_G_0nUkzp
+SOCIAL_AUTH_FACEBOOK_KEY = ''
 
 LOGIN_URL = '/auth/login/google-oauth2'
 
@@ -39,10 +37,23 @@ LOGOUT_REDIRECT_URL = '/'
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 # Application definition
 
+SOCIAL_AUTH_FACEBOOK_APP_KEY = ''
+SOCIAL_AUTH_FACEBOOK_APP_SECRET = ''
+SOCIAL_AUTH_FACEBOOK_APP_NAMESPACE = ''
+
+SOCIAL_AUTH_FACEBOOK_SECRET = ''
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+  'locale': 'ru_RU',
+  'fields': 'id, name, email, age_range'
+}
+SOCIAL_AUTH_FACEBOOK_API_VERSION = '2.10'
+
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOpenId',
+    # 'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
+    # 'social_core.backends.google.GoogleOAuth',
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.google.GooglePlusAuth',
 )
@@ -57,6 +68,7 @@ INSTALLED_APPS = [
     'myapp',
     'django_tables2',
     'social_django',
+    # 'core',
 ]
 
 MIDDLEWARE = [
@@ -143,7 +155,7 @@ STATIC_ROOT = ""  # os.path.join(BASE_DIR, "static")
 
 STATIC_PATH = os.path.join(BASE_DIR, "static")
 
-print(STATIC_PATH)
+# print(STATIC_PATH)
 
 STATICFILES_DIRS = [
     STATIC_PATH

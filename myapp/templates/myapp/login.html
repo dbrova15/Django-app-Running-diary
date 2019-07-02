@@ -17,5 +17,10 @@
             {% csrf_token %}
             <input type="submit" class="btn btn-primary" value="Войти"/>
         </form>
+        <a class="g-signin2" href="{% url 'social:begin' 'google-oauth2' %}">
+            Login whith Google +
+        </a>
+{#    <div class="g-signin2" data-onsuccess="onSignIn"></div>#}
+
     </div>
 {% endblock %}

@@ -11,16 +11,23 @@
 {% block content %}
 
     <div class="col-md-4" style="float: left">
-    <h1>Login</h1>
+        <h1>Login</h1>
         <form action="/login" method="POST" class="post-form">
             {{ form.as_p }}
             {% csrf_token %}
             <input type="submit" class="btn btn-primary" value="Войти"/>
         </form>
-        <a class="g-signin2" href="{% url 'social:begin' 'google-oauth2' %}">
-            Login whith Google +
-        </a>
-{#    <div class="g-signin2" data-onsuccess="onSignIn"></div>#}
+{#        <a class="btn btn-block btn-social btn-google" href="{% url 'social:begin' 'google-oauth2' %}"#}
+{#           onclick="_gaq.push(['_trackEvent', 'btn-social', 'click', 'btn-google']);">#}
+{#            <span class="fa fa-google"></span> Sign in with Google#}
+{#        </a>#}
+{#        <a class="g-signin2" href="{% url 'social:begin' 'google-oauth2' %}">#}
+{#            Login whith Google +#}
+{#        </a>#}
+        <button class="loginBtn loginBtn--google" href="{% url 'social:begin' 'google-oauth2' %}">
+            Login with Google
+        </button>
+        {#    <div class="btn-google" data-onsuccess="onSignIn"></div>#}
 
     </div>
 {% endblock %}

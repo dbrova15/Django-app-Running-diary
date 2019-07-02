@@ -15,16 +15,19 @@
         {% for field in form %}
             <p>
                 {{ field.label_tag }}<br>
-                <p style="width: 35%">{{ field }}</p>
-                {% if field.help_text %}
-                    <small style="color: grey">{{ field.help_text }}</small>
-                {% endif %}
-                {% for error in field.errors %}
-                    <p style="color: red">{{ error }}</p>
-                {% endfor %}
+            <p style="width: 35%">{{ field }}</p>
+            {% if field.help_text %}
+                <small style="color: grey">{{ field.help_text }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+            {% endfor %}
             </p>
         {% endfor %}
-            {% csrf_token %}
-        <button type="submit" class="btn btn-primary" >Sign up</button>
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
+    <button class="loginBtn loginBtn--google" href="{% url 'social:begin' 'google-oauth2' %}">
+        Sign up with Google
+    </button>
 {% endblock %}

@@ -14,9 +14,9 @@
     {% block rander_table_block %}
     {% endblock %}
 
-{#    <script src="https://apis.google.com/js/platform.js" async defer></script>#}
-{##}
-{#    <meta name="google-signin-client_id" content="1070559222840-05o9kd3jtnoqafgk4hgehnaaak7sb4b1.apps.googleusercontent.com">#}
+    {#    <script src="https://apis.google.com/js/platform.js" async defer></script>#}
+    {##}
+    {#    <meta name="google-signin-client_id" content="1070559222840-05o9kd3jtnoqafgk4hgehnaaak7sb4b1.apps.googleusercontent.com">#}
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -34,8 +34,7 @@
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/apps.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
-
-
+    <link rel="stylesheet" href="{% static 'css/social.css' %}">
 </head>
 
 <body>
@@ -64,8 +63,10 @@
                 {% endif %}
 
                 {% if user.is_authenticated %}
-                    <p>Logged as {{ user.username }}</p>
                     <li><a href="{% url 'logout' %}" class="top-menu">Logout</a></li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <h3 style="color: #bbccdd; float: right">Logged as {{ user.username }}</h3>
                 {% endif %}
             </ul>
         </div>

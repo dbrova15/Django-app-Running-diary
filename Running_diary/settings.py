@@ -24,7 +24,7 @@ SECRET_KEY = os.urandom(16)  # 'ffry3p%r))#9*p#tr!of0k49%*nq@(ta-4#bq9e6_y#bz0h$
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["bakz.pythonanywhere.com"]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1063834827766-snp3s8f08gtb9rgeh9e13bsjqoq0bu8s.apps.googleusercontent.com'
 #  1063834827766-snp3s8f08gtb9rgeh9e13bsjqoq0bu8s.apps.googleusercontent.com

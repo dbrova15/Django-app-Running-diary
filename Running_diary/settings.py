@@ -184,7 +184,7 @@ else:
             'NAME': 'default',
             'USER': 'bakz',
             'PASSWORD': 'Qwerty1234',
-            'HOST': 'bakz.pythonanywhere.com',
+            'HOST': 'bakz.mysql.pythonanywhere-services.com',
             # 'PORT': '5432',
         }
     }

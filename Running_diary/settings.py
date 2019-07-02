@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,21 +23,6 @@ SECRET_KEY = os.urandom(16)  # 'ffry3p%r))#9*p#tr!of0k49%*nq@(ta-4#bq9e6_y#bz0h$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-
-LOCAL_SERV = PROD_SERV = TEST_SERV = False
-
-test_host = []
-print("HOST", socket.gethostname())
-deploy_host = ['green-liveconsole3', 'green-liveweb7']
-if socket.gethostname() in deploy_host:
-    DEBUG = False
-    PROD_SERV = True
-elif socket.gethostname() in test_host:
-    TEST_SERV = True
-    DEBUG = True
-else:
-    DEBUG = True
-    LOCAL_SERV = True
 
 
 ALLOWED_HOSTS = ["bakz.pythonanywhere.com", "127.0.0.1", "localhost"]

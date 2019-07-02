@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.urandom(16)  # 'ffry3p%r))#9*p#tr!of0k49%*nq@(ta-4#bq9e6_y#bz0h$7_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = ["bakz.pythonanywhere.com"]
 

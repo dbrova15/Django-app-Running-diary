@@ -181,7 +181,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'default',
+            'NAME': 'bakz',
             'USER': 'bakz',
             'PASSWORD': 'Qwerty1234',
             'HOST': 'bakz.mysql.pythonanywhere-services.com',

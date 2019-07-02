@@ -44,7 +44,7 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.google.GoogleOAuth',
     'django.contrib.auth.backends.ModelBackend',
-'social_core.backends.google.GooglePlusAuth',
+    'social_core.backends.google.GooglePlusAuth',
 )
 
 INSTALLED_APPS = [

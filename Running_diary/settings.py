@@ -139,12 +139,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = ""  # os.path.join(BASE_DIR, "static")
-#
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static")
-#
-# ]
+STATIC_ROOT = ""  # os.path.join(BASE_DIR, "static")
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+
+]
 
 try:
     from myapp.local_settings import *
@@ -160,10 +160,10 @@ print("DEBUG:", DEBUG)
 if DEBUG:
     # Database
     # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static")
-
-    ]
+    # STATICFILES_DIRS = [
+    #     os.path.join(BASE_DIR, "static")
+    #
+    # ]
 
     DATABASES = {
         'default': {
@@ -172,7 +172,7 @@ if DEBUG:
         }
     }
 else:
-    STATIC_ROOT = "/home/bakz/Running-diary/static" #os.path.join(BASE_DIR, "static")
+    # STATIC_ROOT = "/home/bakz/Running-diary/static" #os.path.join(BASE_DIR, "static")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',

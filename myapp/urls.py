@@ -13,8 +13,5 @@ urlpatterns = [
     path('data_del/id=<int:id_post>', views.del_data, name='del_data'),
     path('edit_post/id=<int:id_post>', views.edit_data, name='edit_data'),
     path('statistic', views.statistic, name='statistic'),
-    # path('complete/facebook/', views.readme, {'next_page': settings.LOGOUT_REDIRECT_URL}),
     path('', include('social_django.urls', namespace='social')),
-    # path('logout/', logout, {'next_page': settings.LOGOUT_REDIRECT_URL},
-    # name='logout'),
 ]

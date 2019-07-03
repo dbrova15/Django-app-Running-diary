@@ -58,26 +58,45 @@
                                                                                   target="_blank">https://www.python.org/</a>
             and install.</p>
 
-        <p>You need to create and fill in the myapp/local_settings.py file. In his file there is only a copied file, the
-            myapp/local_settings_example.py file and edited it.</p>
+        <p>You need to create and fill in the file myapp/local_settings.py. An example of this file is
+            myapp/local_settings_example.py. Fill in the database connection settings for production and for the test
+            server..</p>
 
         <h2>Deployment</h2>
 
-
         <h4>Run command:</h4>
 
-        <code>pip3 install -r requirements.txt</code>
+        <code>$ pip3 install -r requirements.txt</code>
 
         <h4>Database Setup</h4>
         <p>If you are deploying a project on the server, specify the settings for connecting to the database in the file
             myapp.settings in the DATABASES dictionary.</p>
-        <code>python manage.py migrate</code>
+
+        <code>$ python manage.py migrate</code>
+
+        <h4>Create superuser</h4>
+
+        <code>
+            $ python manage.py createsuperuser
+        </code><br>
+        <code>
+            Username: admin
+        </code><br>
+        <code>
+            Email address: admin@admin.com
+        </code><br>
+        <code>
+            Password:
+        </code><br>
+        <code>
+            Password (again):
+        </code><br>
+        <code>
+            Superuser created successfully.
+        </code>
 
         <h4>Start app</h4>
 
-        <code>python manage.py runserver</code>
-
-        <h2>Bugs:</h2>
-        <p>Authorization through social networks is not working yet.</p>
+        <code>$ python manage.py runserver</code>
     </div>
 {% endblock %}

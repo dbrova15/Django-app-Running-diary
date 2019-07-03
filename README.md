@@ -12,13 +12,15 @@ django-tables2==2.0.6
 HTML/CSS
 \
 SQLite3
+\
+social-auth-app-django
 
 ###Prerequisites
 Needed to be installed Python3. If not installed, download the link https://www.python.org/ and install.
 
+You need to create and fill in the file myapp/local_settings.py. An example of this file is myapp/local_settings_example.py. Fill in the database connection settings for production and for the test server.
+
 ###Deployment:
-If you are deploying a project on the server, specify the settings for connecting to the database in the file
-            myapp.settings in the DATABASES dictionary.
             
 Run command:
 
@@ -30,6 +32,17 @@ Database Setup
 
 ```
 python manage.py migrate
+```
+
+Create superuser
+
+```
+$ python manage.py createsuperuser
+Username: admin
+Email address: admin@admin.com
+Password:
+Password (again):
+Superuser created successfully.
 ```
 
 ### Start app

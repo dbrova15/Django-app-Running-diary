@@ -19,26 +19,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.urandom(16)  # 'ffry3p%r))#9*p#tr!of0k49%*nq@(ta-4#bq9e6_y#bz0h$7_'
+SECRET_KEY = os.urandom(16)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-
-
-ALLOWED_HOSTS = ["bakz.pythonanywhere.com", "127.0.0.1", "localhost"]
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = '/'
-
-
-# LOGIN_URL = '/auth/login/google-oauth2'
-#
-# LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL = '/'
-# SOCIAL_AUTH_URL_NAMESPACE = 'social'
-# Application definition
 
 SOCIAL_AUTH_FACEBOOK_APP_NAMESPACE = ''
 
@@ -67,7 +56,6 @@ INSTALLED_APPS = [
     'myapp',
     'django_tables2',
     'social_django',
-    # 'core',
 ]
 
 MIDDLEWARE = [
@@ -103,17 +91,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Running_diary.wsgi.application'
-
-# # Database
-# # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -154,8 +131,6 @@ STATIC_ROOT = ""  # os.path.join(BASE_DIR, "static")
 
 STATIC_PATH = os.path.join(BASE_DIR, "static")
 
-# print(STATIC_PATH)
-
 STATICFILES_DIRS = [
     STATIC_PATH
 
@@ -192,5 +167,3 @@ else:
             'PORT': '',
         }
     }
-print("DEBUG:", DEBUG)
-print()

@@ -23,14 +23,12 @@ def readme(request):
 def add_data(request):
     if request.method == "POST":
         form = PostForm(request.POST)
-        # print(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
-            # print(post)
             post.save()
-            return redirect('data_list')  # , pk=post.pk)
+            return redirect('data_list')
         else:
             print(form.is_valid())
     else:
@@ -133,7 +131,7 @@ def edit_data(request, id_post):
             # post.speed = int(request.POST['distance'][0]) / int(request.POST['duration'][0]) * 60
             post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
             post.save()
-            return redirect('data_list')  # , pk=post.pk)
+            return redirect('data_list')
         else:
             print(form.is_valid())
     else:
@@ -159,7 +157,7 @@ def statistic(request):
     ).annotate(
         average_speed=Avg(F('speed'))
     ).order_by('week')
-    print(data_set)
+
     table = StatTable(data_set)
     RequestConfig(request).configure(table)
     return render(request, 'myapp/stat.html', {"table": table})

@@ -58,8 +58,9 @@ def data_list(request):
         if request.method == 'POST':
             form = ReportFiltersForm(request.POST)
             if form.is_valid():
-                start_date = form.cleaned_data['start_date'] - datetime.timedelta(days=1)
+                start_date = form.cleaned_data['start_date']
                 end_date = form.cleaned_data['end_date'] + datetime.timedelta(days=1)
+
                 list_data = Post.objects.filter(author=login, published_date__range=(start_date, end_date))
                 table = PersonTable(list_data)
                 if table.rows.__len__() != 0:

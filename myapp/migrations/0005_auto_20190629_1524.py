@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='post',
-            name='published_date',
+            name='date_time',
             field=models.DateTimeField(blank=True, default=datetime.datetime(2019, 6, 29, 12, 24, 29, 671539, tzinfo=utc), null=True),
         ),
         migrations.AlterField(

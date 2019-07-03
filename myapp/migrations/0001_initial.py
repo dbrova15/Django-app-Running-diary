@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             name='Post',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('published_date', models.DateTimeField(blank=True, null=True)),
+                ('date_time', models.DateTimeField(blank=True, null=True)),
                 ('distance', models.FloatField()),
                 ('duration', models.IntegerField()),
                 ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),

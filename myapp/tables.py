@@ -1,5 +1,5 @@
 import django_tables2 as tables
-from .models import Post
+from .models import Add_data
 
 
 class PersonTable(tables.Table):
@@ -12,8 +12,8 @@ class PersonTable(tables.Table):
     speed = tables.Column(verbose_name='Speed, km/h')
 
     class Meta:
-        model = Post
-        fields = ('published_date', 'distance', 'duration', 'speed')
+        model = Add_data
+        fields = ('date_time', 'distance', 'duration', 'speed')
 
 
 class StatTable(tables.Table):

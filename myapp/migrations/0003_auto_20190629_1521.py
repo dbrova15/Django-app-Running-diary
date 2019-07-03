@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterField(
             model_name='post',
-            name='published_date',
+            name='date_time',
             field=models.DateTimeField(blank=True, default=datetime.datetime(2019, 6, 29, 12, 21, 4, 221711, tzinfo=utc), null=True),
         ),
     ]

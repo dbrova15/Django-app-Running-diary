@@ -1,5 +1,7 @@
 import socket
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = "super secret key"
 ALLOWED_HOSTS = [""]
 
 LOCAL_SERV = PROD_SERV = TEST_SERV = False

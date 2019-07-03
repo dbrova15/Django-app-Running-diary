@@ -2,7 +2,7 @@
 Django-application for running statistics.
 
 ###Technologies and Libraries:
-\
+
 Python3.7
 \
 Django==2.2.2

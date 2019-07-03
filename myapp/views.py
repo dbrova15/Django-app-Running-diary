@@ -111,6 +111,7 @@ def edit_data(request, id_post):
         else:
             print(form.is_valid())
     else:
+        print(post)
         form = PostForm(instance=post)
     return render(request, 'myapp/add_data.html', {
         'form': form

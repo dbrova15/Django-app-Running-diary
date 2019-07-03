@@ -1,4 +1,5 @@
 # Django-app: Running-diary
+
 Django-application for running statistics.
 
 ### Technologies and Libraries:

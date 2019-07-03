@@ -28,11 +28,13 @@
             {% csrf_token %}
             <button type="submit" style="width: 30%" class="btn btn-primary">Sign up</button>
         </form>
+
         <button class="loginBtn loginBtn--google">
             <a style="color: #ffffff" href="{% url 'social:begin' 'google-oauth2' %}">
                 Sign up whith Google +
             </a>
         </button>
+
         <button class="loginBtn loginBtn--facebook">
             <a style="color: #ffffff" href="{% url 'social:begin' 'facebook' %}">
                 Sign up with Facebook

@@ -13,20 +13,17 @@ class Add_data(models.Model):
     duration = models.IntegerField(help_text="Enter data in minutes")
     speed = models.FloatField(default=None)
 
-    # def publish(self):
-    #     self.save()
-
     def __unicode__(self):
         return unicode(self.distance)
 
     def __str__(self):
         return "{} {}".format(self.author, self.date_time)
 
-    def get_data(self):
-        return {"date_time": self.date_time,
-                "distance": self.distance,
-                "duration": self.duration,
-                "speed": self.speed}
+    # def get_data(self):
+    #     return {"date_time": self.date_time,
+    #             "distance": self.distance,
+    #             "duration": self.duration,
+    #             "speed": self.speed}
 
     def get_absolute_url_delete(self):
         return reverse('del_data', args=[str(self.id)])

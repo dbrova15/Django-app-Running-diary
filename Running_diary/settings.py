@@ -28,9 +28,9 @@ SECRET_KEY = os.urandom(16)  # 'ffry3p%r))#9*p#tr!of0k49%*nq@(ta-4#bq9e6_y#bz0h$
 ALLOWED_HOSTS = ["bakz.pythonanywhere.com", "127.0.0.1", "localhost"]
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = 'logout'
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = '/'
 
 
 # LOGIN_URL = '/auth/login/google-oauth2'

@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-from django.views.generic import UpdateView
 from pytz import unicode
 from django.urls import reverse
 
@@ -18,12 +17,6 @@ class Add_data(models.Model):
 
     def __str__(self):
         return "{} {}".format(self.author, self.date_time)
-
-    # def get_data(self):
-    #     return {"date_time": self.date_time,
-    #             "distance": self.distance,
-    #             "duration": self.duration,
-    #             "speed": self.speed}
 
     def get_absolute_url_delete(self):
         return reverse('del_data', args=[str(self.id)])

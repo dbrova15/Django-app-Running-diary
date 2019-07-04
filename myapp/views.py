@@ -40,7 +40,7 @@ def add_data(request):
     })
 
 
-def det_average_speed(list_data):
+def get_average_speed(list_data):
     if len(list_data) != 0:
         all_speed = [i.speed for i in list_data]
         average_speed = sum(all_speed) / len(all_speed)
@@ -49,11 +49,11 @@ def det_average_speed(list_data):
     return average_speed
 
 
-def default_table(login):
+def user_data_table(login):
     list_data = Add_data.objects.filter(author=login)
     table = PersonTable(list_data)
 
-    return table, det_average_speed(list_data)
+    return table, get_average_speed(list_data)
 
 
 @login_required
@@ -69,11 +69,11 @@ def data_list(request):
 
                 list_data = Add_data.objects.filter(author=login, date_time__range=(start_date, end_date))
                 table = PersonTable(list_data)
-                average_speed = det_average_speed(list_data)
+                average_speed = get_average_speed(list_data)
             else:
-                table, average_speed = default_table(login)
+                table, average_speed = user_data_table(login)
         else:
-            table, average_speed = default_table(login)
+            table, average_speed = user_data_table(login)
 
         form = ReportFiltersForm(request.POST)
 

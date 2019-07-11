@@ -13,6 +13,8 @@ class ReportFiltersForm(forms.Form):
 
 class PostForm(forms.ModelForm):
     date_time = forms.DateField(widget=SelectDateWidget(), initial=timezone.now())
+    distance = forms.IntegerField(min_value=1)
+    duration = forms.IntegerField(min_value=1)
 
     class Meta:
         model = Add_data

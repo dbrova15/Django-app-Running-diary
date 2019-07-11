@@ -17,6 +17,14 @@ from myapp.tables import PersonTable, StatTable
 from .models import Add_data
 
 
+def get_speed(distance, duration):
+    try:
+        speed = round(int(distance) / int(duration) * 60 / 1000, 3)
+    except ZeroDivisionError:
+        return 0
+    return speed
+
+
 def readme(request):
     return render(request, 'myapp/readme.html', {})
 
@@ -28,7 +36,7 @@ def add_data(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
+            post.speed = get_speed(request.POST['distance'], request.POST['duration'])
             post.save()
             return redirect('data_list')
         else:
@@ -105,7 +113,7 @@ def edit_data(request, id_post):
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post.author = request.user
-            post.speed = round(int(request.POST['distance']) / int(request.POST['duration']) * 60 / 1000, 3)
+            post.speed = get_speed(request.POST['distance'], request.POST['duration'])
             post.save()
             return redirect('data_list')
         else:

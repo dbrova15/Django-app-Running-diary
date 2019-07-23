@@ -11,9 +11,6 @@ class Add_data(models.Model):
     duration = models.IntegerField(help_text="Enter data in minutes", default=1)
     speed = models.FloatField(default=None)
 
-    def __unicode__(self):
-        return self.distance
-
     def __str__(self):
         return "{} {}".format(self.author, self.date_time)
 

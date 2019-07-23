@@ -1,7 +1,5 @@
 import datetime
 
-from django.contrib.auth import authenticate
-from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Avg, F, Count, Sum

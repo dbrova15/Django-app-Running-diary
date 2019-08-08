@@ -10,7 +10,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django_tables2 import RequestConfig
 
-from myapp.forms import PostForm, ReportFiltersForm
+from myapp.forms import PostForm, ReportFiltersForm, DelForm
 from myapp.tables import PersonTable, StatTable
 from .models import Add_data
 
@@ -96,12 +96,20 @@ class SignUp(generic.CreateView):
     success_url = reverse_lazy('login')
     template_name = 'registration/signup.html'
 
+@login_required
+def del_view(request, id_post):
+    return render(request, 'myapp/del_view.html', {
+        # 'form': form,
+        'id_post': id_post
+    })
 
 @login_required
 def del_data(request, id_post):
-    post = get_object_or_404(Add_data, pk=id_post)
-    query = post.delete()
-    return redirect("/data_list", request, query)
+    if request.method == "POST":
+        post = get_object_or_404(Add_data, pk=id_post)
+        query = post.delete()
+        return redirect("/data_list", request, query)
+    return redirect("/data_list", request)
 
 
 @login_required

@@ -17,5 +17,8 @@ class Add_data(models.Model):
     def get_absolute_url_delete(self):
         return reverse('del_data', args=[str(self.id)])
 
+    def get_absolute_url_delete_view(self):
+        return reverse('del_view', args=[str(self.id)])
+
     def get_absolute_url_update(self):
         return reverse('edit_data', args=[str(self.id)])

@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{% load render_table from django_tables2 %}
+{% load static %}
+{% block title %}
+    POST LIST
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-6 col-md-offset-3">
+        <h1 style="text-align:center;">Are you sure you want to delete entry number {{ id_post }}</h1>
+        <div class="col-md-3">
+            <a href="{% url 'data_list' %}" style="width: 180px;">
+                <button class="btn btn-primary" type="button" style="width: 180px;">
+                    No
+                </button>
+            </a>
+        </div>
+        <div class="col-md-3 col-md-offset-4">
+            <form method="post" action="/data_del/id={{ id_post }}">
+                {% csrf_token %}
+                <input class="btn btn-danger" style="width: 180px;" type="submit" value="Delete">
+            </form>
+        </div>
+
+    </div>
+
+
+
+{% endblock %}

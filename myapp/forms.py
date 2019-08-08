@@ -19,3 +19,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Add_data
         fields = ('date_time', 'distance', 'duration')
+
+
+class DelForm(forms.Form):
+    fieldYesNo = forms.TypedChoiceField(coerce=lambda x: x =='True',
+                                   choices=((False, 'No'), (True, 'Yes')))
+

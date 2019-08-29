@@ -18,9 +18,12 @@ social-auth-app-django
 
 ### Prerequisites:
 
-Needed to be installed Python3. If not installed, download the link https://www.python.org/ and install.
+Needed to be installed Python3. If not installed, download the 
+link https://www.python.org/ and install.
 
-You need to create and fill in the file myapp/local_settings.py. An example of this file is myapp/local_settings_example.py. Fill in the database connection settings for production and for the test server.
+You need to create and fill in the file myapp/local_settings.py. 
+An example of this file is myapp/local_settings_example.py. Fill in the 
+database connection settings for production and for the test server.
 
 ### Deployment:
             
